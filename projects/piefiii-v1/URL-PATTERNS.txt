@@ -1,0 +1,39 @@
+URL PATTERNS
+
+
+USER
+	/user GET (IF ADMIN OK, ELSE GO TO /id) *
+	/user/new GET
+	/user/id GET *
+	/user/id PUT
+	/user/id DELETE
+
+	
+INVENTORY
+	/inventory GET
+
+CHEMICAL
+	/inventory/chemical/id GET
+	/inventory/chemical/new GET
+	/inventory/chemical/id PUT
+	/inventory/chemical/id DELETE
+
+GLASSWARE
+	/inventory/glassware/id GET
+	/inventory/glassware/new GET
+	/inventory/glassware/id PUT
+	/inventory/glassware/id DELETE
+
+HOME
+	"/home" *
+	/login *
+
+CALENDAR
+	/calendar *
+
+RESERVA
+	/calendar/reservation/id GET
+	/calendar/reservation/new GET
+	/calendar/reservation/id PUT
+	/calendar/reservation/id DELETE
+

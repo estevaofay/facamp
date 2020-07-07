@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Inventory</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  	<link rel="stylesheet" type="text/css" href="/Users/estevaofay/Desktop/Batata/views/css/inventory.css">
+
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="home.html">LabsFacamp</a>
+          </div>
+            <ul class="nav navbar-nav">
+              <li><a href="calendar.html">Calendário</a></li>
+              <li><a href="inventory.html">Inventário</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right ">
+            <p class="navbar-text">Logado como <a href="user-id.html" class="navbar-link">José Martins Jr.</a></p>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="user-id.html">Meu Perfil</a></li>
+                  <li><a href="#">Minhas Reservas</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="user.html">Gerenciar Usuários</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="login.html">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- ENDS NAVBAR -->
+
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box no-header clearfix">
+                    <div class="main-box-body clearfix">
+
+                        <div class="table-responsive">
+                            <table class="table user-list">
+                                <thead>
+                                    <tr>
+                                    <th><span>User</span></th>
+                                    <th><span>Created</span></th>
+                                    <th class="text-center"><span>Status</span></th>
+                                    <th><span>Email</span></th>
+                                    <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="http://bootdey.com/img/Content/user_1.jpg" alt="">
+                                            <a href="user-id.html" class="user-link">Henrique Verrengia de Oliveira</a>
+                                            <span class="user-subhead">Member</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-default">pending</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">henrique.verrengia@gmail.com</a>
+                                        </td>
+                                        <td style="width:20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="http://bootdey.com/img/Content/user_3.jpg" alt="">
+                                            <a href="user-id.html" class="user-link">Estêvão Francisco Fáy</a>
+                                            <span class="user-subhead">Admin</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">eff.fay@gmail.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="http://bootdey.com/img/Content/user_2.jpg" alt="">
+                                            <a href="user-id.html" class="user-link">Guilherme Gomes</a>
+                                            <span class="user-subhead">Member</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-danger">inactive</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">gui060496@gmail.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="http://bootdey.com/img/Content/user_3.jpg" alt="">
+                                            <a href="user-id.html" class="user-link">Pedro Henrique Cotta Vivaldi</a>
+                                            <span class="user-subhead">Admin</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">pedrohcv96@outlook.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>

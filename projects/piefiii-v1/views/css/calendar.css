@@ -1,0 +1,14 @@
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background: radial-gradient(ellipse at top, #04395b 0,#02131d 80%);
+}
+
+#calendar-container {
+	padding-top: 2%;
+}
+
+h1, h2 {
+	color: white;
+	text-align: center;
+}
