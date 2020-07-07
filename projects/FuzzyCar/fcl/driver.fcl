@@ -1,0 +1,100 @@
+FUNCTION_BLOCK driver
+
+// Define input variables
+VAR_INPUT				
+	carOrientation : REAL;
+	positionError : REAL;
+END_VAR
+
+// Define output variable
+VAR_OUTPUT				
+	wheelOrientation : REAL;
+END_VAR
+
+// Fuzzify input variable 'carOrientation': { 'RIGHTBELOW', 'RIGHTUNDER', 'RIGHT VERTICAL', 'CENTER', 'LEFT VERTICAL', 'LEFT UNDER', 'LEFT BELOW' }
+FUZZIFY carOrientation			
+	TERM rb := (-180 , 0)(-130	, 1) (-40	, 1) (10	, 0);
+	TERM ru := (-10	, 0) (30	, 1) (70	, 0);
+	TERM rv := (55	, 0) (72	, 1) (90	, 0);
+	TERM ve := (80	, 0) (90	, 1) (100	, 0);
+	TERM lv := (90	, 0) (112	, 1) (135	, 0);
+	TERM lu := (120	, 0) (140	, 1) (190	, 0);
+	TERM lb := (170	, 0) (225	, 1) (280	, 1) (360, 0);
+END_FUZZIFY
+
+// Fuzzify input variable 'positionError': { 'LEFT', 'LEFT CENTER', 'CENTER','RIGHT CENTER', 'RIGHT }
+FUZZIFY positionError			
+	TERM le := (-700  , 1) (-560	, 1) (-210	, 0);
+	TERM lc := (-300 , 0) (-140	, 1) (0	, 0);
+	TERM ce := (-100 , 0) (0, 1) (100	, 0);
+	TERM rc := (0 , 0) (160	, 1) (300	, 0);
+	TERM ri := (210 , 0) (560	, 1) (700	, 1);
+END_FUZZIFY
+
+DEFUZZIFY wheelOrientation			
+	TERM nb := (-30 , 1) (-15	, 0); 
+	TERM nm := (-20	, 0) (-15	, 1) (-8	, 0);
+	TERM ns := (-12	, 0) (-7	, 1) (-1		, 0);
+	TERM ze := (-5 	, 0) (0		, 1) (5		, 0); 
+	TERM ps := (1	, 0) (7		, 1) (12	, 0);
+	TERM pm := (8	, 0) (15	, 1) (20	, 0);
+	TERM pb := (15	, 0) (30	, 1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+// Inference rules
+RULEBLOCK No1
+	AND : MIN;	// Use 'min' for 'and'
+	ACT : MIN;	// Use 'min' activation method
+	ACCU : MAX;	// Use 'max' accumulation method
+
+	
+
+	RULE 1 : IF carOrientation IS rb AND positionError IS le THEN wheelOrientation IS ps;
+	RULE 2 : IF carOrientation IS rb AND positionError IS lc THEN wheelOrientation IS pm; 
+	RULE 3 : IF carOrientation IS rb AND positionError IS ce THEN wheelOrientation IS pm;
+	RULE 4 : IF carOrientation IS rb AND positionError IS rc THEN wheelOrientation IS pb;
+	RULE 5 : IF carOrientation IS rb AND positionError IS ri THEN wheelOrientation IS pb;
+
+	RULE 6 : IF carOrientation IS ru AND positionError IS le THEN wheelOrientation IS ns;
+	RULE 7 : IF carOrientation IS ru AND positionError IS lc THEN wheelOrientation IS ps;
+	RULE 8 : IF carOrientation IS ru AND positionError IS ce THEN wheelOrientation IS pm;
+	RULE 9 : IF carOrientation IS ru AND positionError IS rc THEN wheelOrientation IS pb; 
+	RULE 10 : IF carOrientation IS ru AND positionError IS ri THEN wheelOrientation IS pb;
+
+	RULE 11	: IF carOrientation IS rv AND positionError IS le THEN wheelOrientation IS nm;
+	RULE 12 : IF carOrientation IS rv AND positionError IS lc THEN wheelOrientation IS ns;
+	RULE 13 : IF carOrientation IS rv AND positionError IS ce THEN wheelOrientation IS ps;
+	RULE 14 : IF carOrientation IS rv AND positionError IS rc THEN wheelOrientation IS pm;
+	RULE 15 : IF carOrientation IS rv AND positionError IS ri THEN wheelOrientation IS pb;
+
+	RULE 16 : IF carOrientation IS ve AND positionError IS le THEN wheelOrientation IS nm; 
+	RULE 17 : IF carOrientation IS ve AND positionError IS lc THEN wheelOrientation IS nm;
+	RULE 18 : IF carOrientation IS ve AND positionError IS ce THEN wheelOrientation IS ze;
+	RULE 19 : IF carOrientation IS ve AND positionError IS rc THEN wheelOrientation IS pm;
+	RULE 20 : IF carOrientation IS ve AND positionError IS ri THEN wheelOrientation IS pm;
+	
+	RULE 21 : IF carOrientation IS lv AND positionError IS le THEN wheelOrientation IS nb;
+	RULE 22 : IF carOrientation IS lv AND positionError IS lc THEN wheelOrientation IS nm;
+	RULE 23 : IF carOrientation IS lv AND positionError IS ce THEN wheelOrientation IS ns; 
+	RULE 24 : IF carOrientation IS lv AND positionError IS rc THEN wheelOrientation IS ps;
+	RULE 25 : IF carOrientation IS lv AND positionError IS ri THEN wheelOrientation IS pm;
+
+	RULE 26 : IF carOrientation IS lu AND positionError IS le THEN wheelOrientation IS nb;
+	RULE 27 : IF carOrientation IS lu AND positionError IS lc THEN wheelOrientation IS nb;
+	RULE 28 : IF carOrientation IS lu AND positionError IS ce THEN wheelOrientation IS nm;
+	RULE 29 : IF carOrientation IS lu AND positionError IS rc THEN wheelOrientation IS ns;
+	RULE 30 : IF carOrientation IS lu AND positionError IS ri THEN wheelOrientation IS ps;
+
+	RULE 31 : IF carOrientation IS lb AND positionError IS le THEN wheelOrientation IS nb;
+	RULE 32	: IF carOrientation IS lb AND positionError IS lc THEN wheelOrientation IS nb;
+	RULE 33 : IF carOrientation IS lb AND positionError IS ce THEN wheelOrientation IS nm;
+	RULE 34 : IF carOrientation IS lb AND positionError IS rc THEN wheelOrientation IS nm;
+	RULE 35 : IF carOrientation IS lb AND positionError IS ri THEN wheelOrientation IS ns;
+
+
+	
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
