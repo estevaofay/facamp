@@ -1,0 +1,8 @@
+{
+  "name": "rpg-dm",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,11 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{tournament.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-tabs>
+    <ion-tab [root]="gamesRoot" [rootParams]="tournament" tabTitle="Games" tabIcon="american-football"></ion-tab>
+    <ion-tab [root]="standingsRoot" [rootParams]="tournament" tabTitle="Standings" tabIcon="podium"></ion-tab>
+    <ion-tab [root]="teamsRoot" [rootParams]="tournament" tabTitle="Teams" tabIcon="contacts"></ion-tab>
+</ion-tabs>
