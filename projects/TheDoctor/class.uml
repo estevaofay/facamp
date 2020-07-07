@@ -1,0 +1,54 @@
+
+class Agent {
+	double x
+	double y
+	double vx
+	double vy
+	double sizeX
+	double sizeY
+	boolean alive
+	Image icon
+
+	boolean insideMyRange(double x, double y)
+}
+
+class Board {
+	List<Agent> listOfAgents
+	Tardis tardis	
+	List<Agent> senseEnvironment(double x, double y, double rangeX, double rangeY)
+	boolean move(Agent a, double x, double y)
+	void setTardisCoordinates(double x, double y)
+}
+
+class Dalek {
+	
+}
+
+class Tardis {
+	
+}
+
+class BoardUI {
+	
+}
+
+class App {
+	
+}
+
+interface BoardChangeListener {
+	void boardStateHasChanged;
+}
+
+Agent <|-- Dalek
+Agent <|-- Tardis
+
+Board *-- "n" Agent : has
+Board *-- "1" Tardis : has
+
+BoardUI -- BoardPanel : contains
+BoardPanel -- Board : render
+
+BoardChangeListener <|-- BoardPanel
+
+App -- BoardUI : contains
